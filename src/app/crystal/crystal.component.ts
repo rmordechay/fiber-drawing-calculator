@@ -16,9 +16,9 @@ import {AppService, Crystal} from "../app.service";
     styleUrl: './crystal.component.css'
 })
 export class CrystalComponent implements OnInit {
-    radius: number = 2;
-    lowerSpeed: number = 3;
-    upperSpeed: number = 4;
+    radius: number = 0;
+    lowerSpeed: number = 0;
+    upperSpeed: number = 0;
     crystals: {[key: string]: Crystal} = {};
 
     protected readonly Object = Object;
@@ -32,7 +32,8 @@ export class CrystalComponent implements OnInit {
     /**
      *
      */
-    apply() {
+    saveRow() {
+        if (this.radius === 0 || this.lowerSpeed === 0 || this.upperSpeed === 0) return;
         const crystalRadius = this.getCrystalRadius()
         const crystal: Crystal = {
             radius: this.radius,
@@ -40,9 +41,9 @@ export class CrystalComponent implements OnInit {
             upperSpeed: this.upperSpeed,
             crystalRadius
         }
-        const keyId = this.service.getKeyId(this.radius, this.lowerSpeed, this.upperSpeed)
-        this.service.setItem(keyId, crystal)
-        this.crystals = this.service.getAllRows()
+        const keyId = this.service.getKeyId(this.radius, this.lowerSpeed, this.upperSpeed);
+        this.service.setItem(keyId, crystal);
+        this.crystals = this.service.getAllRows();
     }
 
     /**
