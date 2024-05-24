@@ -1,0 +1,51 @@
+<h1 class="pt-4">Fiber Drawing Calculator</h1>
+<div class="row align-items-start pt-4">
+    <div class="col">
+        <div class="d-flex align-items-center mt-4">
+            <h6 class="col-3">Radius</h6>
+            <div class="col-7">
+                <input class="form-range" type="range" min="0" max="30" step="0.1" [(ngModel)]="radius">
+            </div>
+            <h6 class="col-2">{{ radius.toLocaleString("de-DE") }}</h6>
+        </div>
+        <div class="d-flex align-items-center mt-4">
+            <h6 class="col-3">Lower Speed</h6>
+            <div class="col-7">
+                <input class="form-range" type="range" min="0" max="30" step="0.1" [(ngModel)]="lowerSpeed">
+            </div>
+            <h6 class="col-2">{{ lowerSpeed.toLocaleString("de-DE") }}</h6>
+        </div>
+        <div class="d-flex align-items-center mt-4">
+            <h6 class="col-3">Upper Speed</h6>
+            <div class="col-7">
+                <input class="form-range" type="range" min="0" max="30" step="0.1" [(ngModel)]="upperSpeed">
+            </div>
+            <h6 class="col-2">{{ upperSpeed.toLocaleString("de-DE") }}</h6>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="apply()">Apply</button>
+    </div>
+    <div class="col">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Radius</th>
+                <th scope="col">Lower Speed</th>
+                <th scope="col">Upper Speed</th>
+                <th scope="col">Crystal Radius</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            <tr *ngFor="let row of Object.values(crystals)">
+                <td>{{ row.radius.toLocaleString("de-DE") }}</td>
+                <td>{{ row.lowerSpeed.toLocaleString("de-DE") }}</td>
+                <td>{{ row.upperSpeed.toLocaleString("de-DE") }}</td>
+                <td><b>{{ row.crystalRadius.toLocaleString("de-DE") }}</b></td>
+                <td>
+                    <button type="button" class="btn-close btn-close-red" (click)="removeRow(row.radius, row.lowerSpeed, row.upperSpeed)"></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
