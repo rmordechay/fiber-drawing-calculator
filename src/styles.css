@@ -1,7 +1,6 @@
 body {
     margin: 0;
     overflow: hidden;
-    background: #e3bcca;
 }
 
 .heart-container {
@@ -112,13 +111,3 @@ body {
     --fall-duration: 17s;
     --fade-duration: 17s;
 }
-
-.table {
-    --bs-table-bg: #e3bcca;
-}
-
-.btn-primary {
-    --bs-btn-bg: #a55d77;
-    border: var(--bs-btn-border-width) solid #e3bcca;
-}
-

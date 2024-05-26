@@ -19,6 +19,7 @@ export class CrystalComponent implements OnInit {
     radius: number = 0;
     lowerSpeed: number = 0;
     upperSpeed: number = 0;
+    heartsActive = false;
     crystals: {[key: string]: Crystal} = {};
 
     protected readonly Object = Object;
@@ -62,5 +63,12 @@ export class CrystalComponent implements OnInit {
         const keyId = this.service.getKeyId(radius, lowerSpeed, upperSpeed)
         this.service.removeItem(keyId)
         delete this.crystals[keyId]
+    }
+
+    /**
+     *
+     */
+    switchHearts() {
+        this.heartsActive = !this.heartsActive
     }
 }
